@@ -1,30 +1,43 @@
 <template>
   <div class="card">
-    <img src="../../assets/images/image-equilibrium.jpg" alt="NFT image">
+    <NftImage image="/images/image-equilibrium.jpg" />
     <div class="card-content">
-      <h3 class="card-title">Equilibrium #3429</h3>
+      <a class="card-title">Equilibrium #3429</a>
       <p class="card-paragraph">
         Our Equilibrium collection promotes balance and calm.
       </p>
       <div class="card-values">
         <div class="nft-value">
-          <img src="../../assets/images/icon-ethereum.svg" alt="NFT ethereum value">
+          <img src="/images/icon-ethereum.svg" alt="NFT ethereum value">
           0.041 ETH
         </div>
         <div class="nft-time">
-          <img src="../../assets/images/icon-clock.svg" alt="NFT time">
+          <img src="/images/icon-clock.svg" alt="NFT time">
           3 days left
         </div>
       </div>
     </div>
     <div class="card-footer">
       <div class="nft-creator">
-        <img src="../../assets/images/image-avatar.png" alt="NFT Creator">
-        <p>Creation of <span>Jules Wyvern</span></p>
+        <img src="/images/image-avatar.png" alt="NFT Creator">
+        <p>Creation of <a class="nft-creator-name">Jules Wyvern</a></p>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import NftImage from '@/components/nft-image/nft-image.vue'
+
+export default {
+  components: {
+    NftImage
+  },
+  setup() {
+    
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .card {
@@ -37,25 +50,28 @@
   flex-direction: column;
   background-color: $card-bg-color;
 
-  img {
-    width: 100%;
-    border-radius: 8px;
-  }
-
   .card-content {
     .card-title {
       color: $white;
       margin-bottom: 16px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 120%;
+      font-weight: 600;
+
+      &:hover {
+        color: $secondary;
+      }
     }
 
     .card-paragraph {
       color: $primary;
       font-weight: 300;
+      margin: 16px auto;
       font-size: $paragraph-font-size;
     }
 
     .card-values {
-      padding: 24px 0 0 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -109,6 +125,16 @@
       column-gap: 16px;
       letter-spacing: 0.025rem;
 
+      .nft-creator-name {
+        cursor: pointer;
+        color: $white;
+        font-weight: 400;
+
+        &:hover {
+          color: $secondary;
+        }
+      }
+
       img {
         width: 32px;
         border: 1px solid $white;
@@ -118,11 +144,6 @@
       p {
         color: $primary;
         font-weight: 300;
-
-        span {
-          color: $white;
-          font-weight: 400;
-        }
       }
     }
   }
