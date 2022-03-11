@@ -20,6 +20,7 @@
   border-radius: 16px;
   flex-direction: column;
   background-color: $card-bg-color;
+  box-shadow: 0 20px 14px 14px rgba(7, 15, 26, 0.6), 0 0 52px 52px rgba(7, 15, 26, 0.45);
 
   .card-footer {
     height: fit-content;
