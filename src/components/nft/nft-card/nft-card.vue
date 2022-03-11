@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Card from '@/components/utils/card/card.vue'
+import Card from '@/components/utils/Card/card.vue'
 import NftImage from '@/components/nft/nft-image/nft-image.vue'
 
 export default {
