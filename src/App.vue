@@ -1,6 +1,16 @@
 <template>
   <main>
-    <nft-card></nft-card>
+    <nft-card
+      nft-image="/images/image-equilibrium.jpg"
+      nft-name="Equilibrium #3429"
+      nft-description="Our Equilibrium collection promotes balance and calm."
+      nft-price="0.041 ETH"
+      nft-deadline="3 days left"
+      :nft-creator="{
+        name: 'Jules Wyvern',
+        avatar: '/images/image-avatar.png'
+      }"
+    ></nft-card>
   </main>
 </template>
 

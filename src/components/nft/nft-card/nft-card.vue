@@ -4,25 +4,25 @@
       <NftImage :image="nftImage" />
     </template>
     <template #content>
-      <a class="nft-title">Equilibrium #3429</a>
+      <a class="nft-title">{{ nftName }}</a>
       <p class="nft-description">
-        Our Equilibrium collection promotes balance and calm.
+        {{ nftDescription }}
       </p>
       <div class="nft-values">
         <div class="nft-value">
           <img src="/images/icon-ethereum.svg" alt="NFT ethereum value">
-          0.041 ETH
+          {{ nftPrice }}
         </div>
         <div class="nft-time">
           <img src="/images/icon-clock.svg" alt="NFT time">
-          3 days left
+          {{ nftDeadline }}
         </div>
       </div>
     </template>
     <template #footer>
       <div class="nft-creator">
-        <img src="/images/image-avatar.png" alt="NFT Creator">
-        <p>Creation of <a class="nft-creator-name">Jules Wyvern</a></p>
+        <img :src="nftCreatorAvatar" alt="NFT Creator">
+        <p>Creation of <a class="nft-creator-name">{{ nftCreator.name }}</a></p>
       </div>
     </template>
   </Card>
@@ -38,12 +38,50 @@ export default {
     Card,
     NftImage
   },
-  setup() {
+  props: {
+    nftImage: {
+      type: String,
+      required: true
+    },
+    nftName: {
+      type: String,
+      required: true
+    },
+    nftDescription: {
+      type: String,
+      required: true
+    },
+    nftPrice: {
+      type: String,
+      required: true
+    },
+    nftDeadline: {
+      type: String,
+      required: true
+    },
+    nftCreator: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    const getStaticAssetPath = (path) => {
+      return `${import.meta.env.VITE_BASE}${path}`
+    }
+    
     const nftImage = computed(() => {
-      return `${import.meta.env.VITE_BASE}/images/image-equilibrium.jpg`
+      return getStaticAssetPath(props.nftImage)
     })
 
-    return { nftImage }
+    const nftCreatorAvatar = computed(() => {
+      return getStaticAssetPath(props.nftCreator.avatar)
+    })
+
+    return { 
+      nftImage,
+      nftCreatorAvatar,
+      getStaticAssetPath
+    }
   }
 }
 </script>
