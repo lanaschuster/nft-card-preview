@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import NftCard from './components/nft-card/nft-card.vue'
+import NftCard from '@/components/nft/nft-card/nft-card.vue'
 
 export default {
   components: {
