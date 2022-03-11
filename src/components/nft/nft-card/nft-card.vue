@@ -1,7 +1,7 @@
 <template>
   <Card>
     <template #image>
-      <NftImage image="/images/image-equilibrium.jpg" />
+      <NftImage :image="nftImage" />
     </template>
     <template #content>
       <a class="nft-title">Equilibrium #3429</a>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import Card from '@/components/utils/Card/card.vue'
 import NftImage from '@/components/nft/nft-image/nft-image.vue'
 
@@ -38,7 +39,11 @@ export default {
     NftImage
   },
   setup() {
-    
+    const nftImage = computed(() => {
+      return `${import.meta.env.VITE_BASE}/images/image-equilibrium.jpg`
+    })
+
+    return { nftImage }
   }
 }
 </script>
